@@ -1,9 +1,9 @@
-
 import axios from 'axios';
 
+const Url ='http://localhost:5000'
 // Create a custom Axios instance with default headers
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:5000', // Replace with your API's base URL
+  baseURL: Url, // Replace with your API's base URL
 });
 
 // Add a request interceptor to dynamically set the token if available
@@ -22,5 +22,5 @@ axiosInstance.interceptors.request.use(
   }
 );
 
-const Url ='http://localhost:5000'
+
 export { axiosInstance, Url }
