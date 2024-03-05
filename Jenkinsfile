@@ -17,7 +17,7 @@ pipeline {
         stage('Docker Login') {
             steps {
                 // Navigate to the frontend directory
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'                		
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'                		
 	              echo 'Login Completed'
             }
         }
@@ -26,7 +26,7 @@ pipeline {
                 // Navigate to the frontend directory
                 dir('frontend') {
                     // Build frontend Docker image
-                    sh 'sudo docker build -t surendergupta/frontend-image .'
+                    sh 'docker build -t surendergupta/frontend-image .'
                     echo 'Build Frontend Image Completed'
                 }
             }
@@ -37,7 +37,7 @@ pipeline {
                 // Navigate to the backend directory
                 dir('backend') {
                     // Build backend Docker image
-                    sh 'sudo docker build -t surendergupta/backend-image .'
+                    sh 'docker build -t surendergupta/backend-image .'
                     echo 'Build Backend Image Completed'
                 }
             }
@@ -45,8 +45,8 @@ pipeline {
 
         stage('Push Image to Docker Hub') {
             steps{
-                sh 'sudo docker push surendergupta/frontend-image:$BUILD_NUMBER'
-                sh 'sudo docker push surendergupta/backend-image:$BUILD_NUMBER'
+                sh 'docker push surendergupta/frontend-image:$BUILD_NUMBER'
+                sh 'docker push surendergupta/backend-image:$BUILD_NUMBER'
                 echo 'Push Image Completed'
               }
         }
