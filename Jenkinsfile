@@ -3,17 +3,11 @@ pipeline {
     
     environment {
         NODE_ENV = 'production'
-        DOCKERHUB_CREDENTIALS= credentials('dockerhubcredentials')
+        DOCKERHUB_CREDENTIALS = credentials('dockerhubcredentials')
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                // Checkout code from GitHub repository
-                git 'https://github.com/surendergupta/Student_career_platform.git'
-            }            
-        }
-        stage('Checkout') {
+        stage('Checkout Code') {
             steps {
                 // Checkout code from GitHub repository
                 git 'https://github.com/surendergupta/Student_career_platform.git'
@@ -42,4 +36,3 @@ pipeline {
         }
     }
 }
-
