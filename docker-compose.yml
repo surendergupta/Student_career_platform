@@ -1,18 +1,14 @@
 version: "3"
 services:
   backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+    image: surendergupta/backend-image
     ports:
-    - "5000:5000"
+      - "5000:5000"
 #    depends_on:
 #      - mongo
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    image: surendergupta/frontend-image
     ports:
-    - "3000:3000"
+      - "3000:3000"
     depends_on:
       - backend
